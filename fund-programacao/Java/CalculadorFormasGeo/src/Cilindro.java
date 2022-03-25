@@ -1,5 +1,3 @@
-package DesafioFormasGeo;
-
 import java.util.Scanner;
 
 public class Cilindro {
