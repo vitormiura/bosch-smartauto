@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Calc {
 
     long cpf, resto, num = 10000000000L;
-    int j = 0, i = 0, d1 = 0, d2 = 2;
+    int j, i, d1 = 0, d2 = 2;
     int[] valid = new int[11];
 
     Scanner input = new Scanner(System.in);   
@@ -25,12 +25,12 @@ public class Calc {
         d1= d1 * 10 % 11; 
         d2= d2 * 10 % 11;    
         if (d1==valid[9] && (d2==valid[10])){
-            System.out.println("O "+ input +" é um CPF válido");
+            System.out.println("O eh um CPF valido!");
         }else{
-            System.out.println("O "+ input + "é um CPF inválido");  
+            System.out.println("O CPF eh invalido!");  
         }
     }
-    void inputi(){   
+    void entrada(){   
         System.out.println("Informe o CPF desejado: ");
         cpf = input.nextLong();
     }
