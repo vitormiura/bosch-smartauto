@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./fund-programacao/Python/jogoDaForca"
+    ]
+}

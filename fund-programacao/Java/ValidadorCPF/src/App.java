@@ -13,7 +13,7 @@ public class App {
             int menu = input.nextInt();
             switch (menu) {
                 case 1:
-                    calc.inputi();
+                    calc.entrada();
                     calc.result();
                     break;
                 case 0: 
