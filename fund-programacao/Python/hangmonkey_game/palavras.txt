@@ -1,0 +1,6 @@
+tiringa:rei do cangaco;
+bosch:melhor que makita;
+corinthians:maior time brasileiro;
+melancia:fruta das grandes;
+rua:calçada de carro;
+python:linguagem de programacao ou cobra;

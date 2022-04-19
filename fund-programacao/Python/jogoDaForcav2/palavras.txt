@@ -1,6 +1,0 @@
-lenhador:corta arvores;
-cuba:pais comunista;
-corinthians:maior time brasileiro;
-melancia:fruta;
-rua:calçada de carro;
-serpente:cobra;
