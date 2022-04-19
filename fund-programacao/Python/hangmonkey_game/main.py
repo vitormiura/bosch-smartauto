@@ -31,15 +31,24 @@ def printar_mococo(vida):
 
 def main():
 
-    print('Jogo da Forca!')
-    time.sleep(0.5)
-    op = input('Deseja Iniciar? (S/N) ').lower()
+    print('--------- Jogo da Forca! ----------')
+    print('[1] - JOGAR')
+    print('[2] - ADICIONAR PALAVRA')
+    print('[3] - SAIR')
+    print('-----------------------------------')
+    #time.sleep(0.5)
+    op = input('Escolha a opcao desejada: ')
     print("-" * 50)
 
-    if op == 's':
+    if op == '1':
         game()
-    else:
+    elif op == '2':
+        add()
+    elif op == '3':
         sys.exit()
+    else:
+        print('Opcao invalida!')
+        main()
 
 def win():
     print("-" * 50)
@@ -66,12 +75,24 @@ def lose():
         print("Opção inválida!")
         lose()
 
+def add():
+    with open('palavras.txt', 'a', encoding='utf-8') as p:
+        print("ADICIONAR PALAVRA FORCA")
+        while True:
+            palavra = input("Digite a palavra a ser adicionada: ").lower()
+            dica = input(f"Digite a dica da palavra '{palavra}': ").lower()
+            p.write(palavra+":"+dica+";"+'\n')
+            p.close()
+            print('PALAVRA ADICIONADA COM SUCESSO!')
+            time.sleep(0.5)
+            main()
+
 def game():
 
     print('Sorteando a palavra...')
     print("-" * 50)
 
-    f = open("palavras.txt", "r").read()
+    f = open("palavras.txt", "r").read() 
     separe = f.replace('\n', '').split(";")   
     sort = separe[random.randint(0, len(separe)-1)]  
     word = sort.split(":") #SORTEIO DA PALAVRA!
