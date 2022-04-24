@@ -1,4 +1,5 @@
 macaco7 = '''
+MACACO FALECEU!!!!!!!!
 _______AAAA_______________AAAA________
        VVVV               VVVV        
        (__)               (__)
@@ -21,6 +22,7 @@ _______AAAA_______________AAAA________
 
 '''
 macaco6 = '''
+errou a letra! vc ainda tem 1 chance.
 _______AAAA_______________AAAA________
        VVVV               VVVV        
        (__)               (__)
@@ -43,6 +45,7 @@ _______AAAA_______________AAAA________
 
 '''
 macaco5 = '''
+errou a letra! vc ainda tem 2 chances.
 _______AAAA_______________AAAA________
        VVVV               VVVV        
        (__)               (__)
@@ -61,6 +64,7 @@ _______AAAA_______________AAAA________
                    
 '''
 macaco4 = '''
+errou a letra! vc ainda tem 3 chances.
 _______AAAA_______________AAAA________
        VVVV               VVVV        
        (__)               (__)
@@ -76,6 +80,7 @@ _______AAAA_______________AAAA________
                                  
 '''
 macaco3= '''
+errou a letra! vc ainda tem 4 chances.
 _______AAAA___________________________
        VVVV                       
        (__)               
@@ -91,6 +96,7 @@ _______AAAA___________________________
                                  
 '''
 macaco2= '''
+errou a letra! vc ainda tem 5 chances.
 _______AAAA___________________________
        VVVV                       
        (__)               

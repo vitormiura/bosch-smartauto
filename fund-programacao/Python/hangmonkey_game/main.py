@@ -23,6 +23,7 @@ def printar_mococo(vida):
         time.sleep(0.5)
         print(macaco6)
         print(f"MAIS UM ERRO E O MACACO FALECE!!!")
+        print("-" * 50)
     elif vida == 1:
         time.sleep(0.5)
         print(macaco7)
@@ -33,8 +34,9 @@ def main():
 
     print('--------- Jogo da Forca! ----------')
     print('[1] - JOGAR')
-    print('[2] - ADICIONAR PALAVRA')
-    print('[3] - SAIR')
+    print('[2] - ADICIONAR PALAVRA E DICA')
+    print('[3] - REMOVER PALAVRA E DICA')
+    print('[4] - SAIR')
     print('-----------------------------------')
     #time.sleep(0.5)
     op = input('Escolha a opcao desejada: ')
@@ -45,6 +47,8 @@ def main():
     elif op == '2':
         add()
     elif op == '3':
+        remove()
+    elif op == '4':
         sys.exit()
     else:
         print('Opcao invalida!')
@@ -78,13 +82,37 @@ def lose():
 def add():
     with open('palavras.txt', 'a', encoding='utf-8') as p:
         print("ADICIONAR PALAVRA FORCA")
+        print("-" * 50)
         while True:
             palavra = input("Digite a palavra a ser adicionada: ").lower()
             dica = input(f"Digite a dica da palavra '{palavra}': ").lower()
-            p.write(palavra+":"+dica+";"+'\n')
+            p.write(palavra+":"+dica+";"+"\n")
             p.close()
             print('PALAVRA ADICIONADA COM SUCESSO!')
             time.sleep(0.5)
+            main()
+
+def remove():
+    f = open("palavras.txt", "r").read() 
+    palavras = f.replace('\n', '').split(";") 
+    print('REMOVER PALAVRA E DICA FORCA!')
+    print("-" * 50)
+    while True:
+        word = input("Digite a palavra a ser removida: ").lower().strip()
+        dica = input("Digite a dica da palavra: ").lower().strip()
+        palavra = (word+":"+dica)
+        if palavra in palavras:
+            indice = palavras.index(palavra)
+            palavras.pop(indice)
+            temp = ''
+            for txt in palavras:
+                temp += (txt + '\n')
+            with open("palavras.txt", "w", encoding='utf-8') as f:
+                f.write(temp)
+            print("PALAVRA DELETADA COM SUCESSO!")
+            main()
+        else:
+            print(f"PALAVRA N ENCONTRADA")
             main()
 
 def game():
@@ -94,8 +122,8 @@ def game():
 
     f = open("palavras.txt", "r").read() 
     separe = f.replace('\n', '').split(";")   
-    sort = separe[random.randint(0, len(separe)-1)]  
-    word = sort.split(":") #SORTEIO DA PALAVRA!
+    sort = separe[random.randint(0, len(separe)-1)] #SORTEIO DA PALAVRA! 
+    word = sort.split(":") 
     tam = len(word[0])
 
     print(f'A palavra sorteada tem {tam} letras')
