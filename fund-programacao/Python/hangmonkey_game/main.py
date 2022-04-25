@@ -1,3 +1,4 @@
+from os import system
 import random
 import time
 import sys
@@ -31,14 +32,13 @@ def printar_mococo(vida):
         lose()
 
 def main():
-
+    system('cls')
     print('--------- Jogo da Forca! ----------')
     print('[1] - JOGAR')
     print('[2] - ADICIONAR PALAVRA E DICA')
     print('[3] - REMOVER PALAVRA E DICA')
     print('[4] - SAIR')
     print('-----------------------------------')
-    #time.sleep(0.5)
     op = input('Escolha a opcao desejada: ')
     print("-" * 50)
 
@@ -86,33 +86,37 @@ def add():
         while True:
             palavra = input("Digite a palavra a ser adicionada: ").lower()
             dica = input(f"Digite a dica da palavra '{palavra}': ").lower()
-            p.write(palavra+":"+dica+";"+"\n")
+            p.write("\n"+palavra+":"+dica+";")
             p.close()
             print('PALAVRA ADICIONADA COM SUCESSO!')
-            time.sleep(0.5)
+            time.sleep(3)
             main()
 
 def remove():
     f = open("palavras.txt", "r").read() 
-    palavras = f.replace('\n', '').split(";") 
+    palavras = f.replace('\n', '').split(";")
     print('REMOVER PALAVRA E DICA FORCA!')
     print("-" * 50)
     while True:
         word = input("Digite a palavra a ser removida: ").lower().strip()
         dica = input("Digite a dica da palavra: ").lower().strip()
-        palavra = (word+":"+dica)
-        if palavra in palavras:
-            indice = palavras.index(palavra)
-            palavras.pop(indice)
+        linha = (word+":"+dica)
+        if linha in palavras:
+            index = palavras.index(linha)
+            palavras.pop(index)
+
             temp = ''
             for txt in palavras:
-                temp += (txt + '\n')
+                temp += (txt+';')
             with open("palavras.txt", "w", encoding='utf-8') as f:
                 f.write(temp)
+
             print("PALAVRA DELETADA COM SUCESSO!")
+            time.sleep(3)
             main()
         else:
-            print(f"PALAVRA N ENCONTRADA")
+            print(f"PALAVRA NAO ENCONTRADA")
+            time.sleep(3)
             main()
 
 def game():
@@ -131,7 +135,7 @@ def game():
     print("-" * 50)
 
     dig = []
-    chance = 7
+    chance = 8
 
     while True:
         temp = ''  
