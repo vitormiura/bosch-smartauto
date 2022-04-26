@@ -16,7 +16,7 @@ def veri(anos):
             if bi % 400 == 0 and bi % 100 == 0:
                     print(f"{bi} é um ano bissexto")
             elif bi % 4 == 0 and bi % 100 != 0: 
-                    print(f"{bi} é bissexto.")
+                    print(f"{bi} é um ano bissexto.")
             else:
                     print(f'{bi} não é bissexto.') 
         else:

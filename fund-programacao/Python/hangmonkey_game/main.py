@@ -6,25 +6,17 @@ from macacos import *
 
 def printar_mococo(vida):
     if vida == 7:
-        time.sleep(0.5)
         print(macaco1)
     elif vida == 6:
-        time.sleep(0.5)
         print(macaco2)
     elif vida == 5:
-        time.sleep(0.5)
         print(macaco3)
     elif vida == 4:
-        time.sleep(0.5)
         print(macaco4)
     elif vida == 3:
-        time.sleep(0.5)
         print(macaco5)
     elif vida == 2:
-        time.sleep(0.5)
         print(macaco6)
-        print(f"MAIS UM ERRO E O MACACO FALECE!!!")
-        print("-" * 50)
     elif vida == 1:
         time.sleep(0.5)
         print(macaco7)
@@ -107,7 +99,7 @@ def remove():
 
             temp = ''
             for txt in palavras:
-                temp += (txt+';')
+                temp += (txt+';'+'\n')
             with open("palavras.txt", "w", encoding='utf-8') as f:
                 f.write(temp)
 
