@@ -18,13 +18,13 @@ class Conta:
         
     def transfere(self, valor, destinho):
         self.saca(valor)
-        destinho.depositar(valor)
+        destinho.deposita(valor)
 
 if __name__ == "__main__":
     conta_junin = Conta(23, "junin", 10000, 50000) 
     conta_ooo = Conta(24, "ooo", 20000, 50000)
     
-    conta_ooo.transfere(conta_junin, 200)
+    conta_ooo.transfere(200, conta_junin)
     
     # print(conta_junin.extrato())
     # conta_junin.deposita(5000.0)
