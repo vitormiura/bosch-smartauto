@@ -1,0 +1,11 @@
+Crie um módulo na sua planilha e cole o seguinte código:
+''''''''''''''''''''''''''''''''''''''''
+Sub gravar() 'Se a sua rotina tiver outro nome aqui
+     Aqui você insere o seu código que faz a gravação ou qualquer outro que quiser
+     Call timer
+End Sub
+
+Sub timer()
+     Application.OnTime Now + TimeValue("00:01:00"), "gravar" 'não esqueça de editar aqui
+End Sub
+''''''''''''''''''''''''''''''''''''''''

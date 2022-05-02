@@ -1,0 +1,12 @@
+Com esse código o usuário não vai poder fechar uma janela de preenchimento obrigatório, por exemplo. Muito útil para a criação de cadastros.
+No exemplo vou usar um UserForm muito simples, na verdade vazio. Mas é apenas para exemplos. 
+Exibiremos uma caixa de diálogo sempre que ele clicar no X onde você poderá inserir uma mensagem, como "É obrigatório o preenchimento dos dados". O código deve ser inserido dentro do form:
+''''''''''''''''''''''''''''''''''''''''
+Private Sub UserForm_QueryClose _
+   (Cancel As Integer, CloseMode As Integer)
+   If CloseMode = vbFormControlMenu Then
+        MsgBox "Função desabilitada!", vbCritical, "AVISO"
+        Cancel = True
+   End If
+End Sub
+''''''''''''''''''''''''''''''''''''''''

@@ -1,0 +1,37 @@
+Quando se dispõe de uma tabela muito extensa de dados é necessária muita precaução e atenção ao procurar uma informação em específico, dentre as várias ali dispostas, certo? Saiba que, com o uso de um comando VBA, é possível facilitar esta tarefa, auxiliando-o nesta procura.
+Este comando em questão será responsável por auxiliar o usuário na busca de valores em determinados locais da planilha, além de possibilitar a visualização da sequência de dados presentes em dada linha e/ou coluna.
+Com o documento aberto, selecione a opção Visual Basic, contido na aba Desenvolvedor.
+Na janela de edição VBA, dê dois clique sobre a Plan1(Análise de Fluxo), que corresponde a planilha a qual queremos executar o comando. Ao clicá-la, abrirá um quadro em branco para a colocação do comando.
+Cole o seguinte comando VBA na caixa de edição:
+''''''''''''''''''''''''''''''''''''''''
+Private Sub Worksheet_SelectionChange(ByVal Target As Excel.Range)
+    '*** Definição de variáveis ***
+    h = ActiveCell.Height
+    w2 = ActiveCell.Width
+    t = ActiveCell.Top
+    w = ActiveCell.Left
+    'Testa se os retangulos shapes são existentes.
+  On Error Resume Next
+  ActiveSheet.Shapes("RectangleV").Delete
+  On Error Resume Next
+ActiveSheet.Shapes("RectangleH").Delete
+    'Ajuste dos shapes retangulos
+ActiveSheet.Shapes.AddShape(msoShapeRectangle, 0, t, w, h).Name = "RectangleV"
+    With ActiveSheet.Shapes("RectangleV")
+     .Fill.Visible = msoFalse
+     .Fill.Transparency = 20#
+     .Line.Weight = 2#
+     .Line.ForeColor.SchemeColor = 10
+     .PrintObject = False
+    End With
+ActiveSheet.Shapes.AddShape(msoShapeRectangle, w, 0, w2, t).Name = "RectangleH"
+    With ActiveSheet.Shapes("RectangleH")
+     .Fill.Visible = msoFalse
+     .Fill.Transparency = 20#
+     .Line.Weight = 2#
+     .Line.ForeColor.SchemeColor = 10
+   End With
+End Sub
+''''''''''''''''''''''''''''''''''''''''
+Feche a janela de configuração VBA e volte à tabela. Ao clicar com o cursor ou mover a caixa de destaque com as setas do teclado, perceba que será realçado o caminho de localização da célula com a cor vermelha, facilitando a sua procura.
+ATENÇÃO: Ao salvar a planilha configurada, não esqueça de salvá-la no formato habilitado para macro, pois, caso contrário, ao abrí-la novamente a mesma não executará a ação.

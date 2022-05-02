@@ -1,0 +1,22 @@
+As macros podem ser criadas de duas formas: Por Gravação e por Codificação, que é como ensinaremos neste tutorial. Hoje introduziremos os conceitos iniciais para que vocês possam criar uma macro do 0.
+As macros serão todas editadas em um ambiente próprio para isso chamado Virtual Basic. É normal que você, mesmo sendo um usuário veterano, esteja se perguntando como acessar este ambiente já que nunca o viu antes. Saiba que isso é perfeitamente normal, pois o Virtual Basic não é exibido por padrão, para vê-lo primeiro temos de fazer alguns ajustes básicos:
+Antes de tudo precisamos então aprender a acessar esta suíte do Excel. Para isso há várias maneiras, uma delas é o atalho ALT + F11 sempre que quiser acessá-la ou então adicionar o botão Virtual Basic às guias. Para isso entre nas opções do Excel e vá em "Personalizar Faixa de Opções" nela, marque a guia "Desenvolvedor" e dê um ok.
+Perceba que as macros somente funcionam para aquelas planilhas para as quais tenham sido inseridas e não para todas as planilhas criadas ou abertas em seu Excel.
+Sabendo isso, escolha a planilha que receberá a Macro e dê um duplo clique, ao fazer isso, será aberta uma janela no lado direito do editor na qual será inserido o código. Posteriormente clique em "Inserir" e então "Procedimento". Na caixinha que se abrirá insira o nome "teste" e marque "Sub" e depois "Público". Ao clicar em OK, o seguinte código aparecerá na sua janela de código:
+''''''''''''''''''''''''''''''''''''''''
+Public Sub Teste()
+	....
+	   Código
+	....
+End Sub
+''''''''''''''''''''''''''''''''''''''''
+A primeira linha do código indica o início da Macro, enquanto a última linha indica o fim da macro. Tudo o que estiver entre essas duas linhas será o código da Macro que o Excel executará quando receber nosso comando.
+Neste primeiro contato com o Virtual Basic vamos utilizar uma das funções mais simples, a MsgBox (de Message Box - Caixa de Mensagem). Essa função nos retorna uma mensagem pré-editada toda vez que executado o comando.
+Com essa função simples vamos construir nossa primeira Macro, copie e cole o seguinte
+''''''''''''''''''''''''''''''''''''''''
+Public Sub Teste ()
+   MsgBox "Tudo ok =D"
+End Sub
+''''''''''''''''''''''''''''''''''''''''
+Veja que toda vez que executarmos a Macro na nossa planilha vamos receberemos a mensagem entre aspas. Podemos fazer o teste no Virtual Basic e ver se dará tudo certo, para isso é só clicar no botão com um símbolo de "Play" (um triângulo verde, virado para a direita). Ao fazer isso, veremos a mensagem " Tudo ok =D " exibida na tela.
+

@@ -1,0 +1,22 @@
+Como as VBAs podem conter códigos maliciosos, o Windows, por segurança, as mantém bloqueadas até que o usuário as habilite.
+Primeiramente crie uma tela de aviso ao usuário.
+Crie uma nova planilha (Plan2) em que você irá inserir as informações que quer aos usuários.
+Oculte essa planilha de dados que acabou de criar.
+Para evitar que o usuário "re-exiba" a planilha, vá até a guia "Revisão" e clique em "Proteger Pasta de Trabalho", deixe o campo "Estrutura" marcado e insira uma senha, "1234" por exemplo.
+Para adicionar o código VBA pressione Alt + f11, dê um duplo clique em "EstaPastaDeTrabalho". Na nova janela que for exibida é só adicionar o código:
+''''''''''''''''''''''''''''''''''''''''
+Private Sub Workbook_Open()
+     ActiveWorkbook.Unprotect "1234"
+     Sheets("Plan2").Visible = True   
+End Sub
+''''''''''''''''''''''''''''''''''''''''
+Repare que se a sua senha for outra combinação que não o "1234" você terá de fazer a substituição no código VBA.
+Para esconder novamente as planilhas no momento do fechamento. No mesmo local de antes, logo abaixo do código anterior você colará as seguintes linhas:
+''''''''''''''''''''''''''''''''''''''''
+Private Sub Workbook_BeforeClose(Cancel As Boolean)
+     Sheets("Plan2").Visible = False
+     ActiveWorkbook.Protect "1234"
+     ThisWorkbook.Save
+End Sub
+''''''''''''''''''''''''''''''''''''''''
+Para desabilitar a opção de copiar (Ctrl+C) e colar (Ctrl+V) temos que bloquar a planilha com os dados

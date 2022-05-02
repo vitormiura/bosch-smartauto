@@ -1,0 +1,67 @@
+O comando que iremos ensinar consiste na criação de janelas de colocação de senha para bloqueio e desbloqueio da planilha de documentos.
+Como exemplo, utilizaremos uma planilha contendo um suposto cadastro de clientes com seus respectivos documentos, devendo mantê-los, portanto, em sigilo.
+1 - Ao criar o documento, reserve a primeira planilha para a colocação dos botões de proteção da mesma. Portanto, na planilha 2, disponhas os dados dos clientes.
+2 - Na planilha 1, crie primeiramente o botão de Proteger Planilha, através da opção Inserir, da aba Desenvolvedor, onde deverás optar por Botão, dentre as alternativas de Controle de Formulário.
+3 - Ao criar o botão, aparecerá a janela para a atribuição de uma macro, clique em Novo para adicionar o comando.
+4 - Apague a mensagem que estiver no campo de comandos e cole o VBA que segue:
+''''''''''''''''''''''''''''''''''''''''
+Sub lsProtegerTodasAsPlanilhas()
+             'Declara as variáveis necessárias
+    Dim lPass As String
+    Dim lQtdePlan As Integer
+    Dim lPlanAtual As Integer
+             'Solicita a senha
+             'O método InputBox é utilizado para solicitar um valor através de um formulário
+    lPass = InputBox("Proteger todas as planilhas:", "Senha", ActName)
+             'Inicia as variáveis
+             'O método Worksheets.Count passa a quantidade de planilhas existentes no arquivo
+    lQtdePlan = Worksheets.Count
+    lPlanAtual = 1
+              'Loop pelas planilhas
+              'A função While realiza um loop de código enquanto não passar por todas as planilhas contadas
+    While lPlanAtual <= lQtdePlan
+              'O método Worksheets(lPlanAtual).Activate ativa a planilha conforme o índice atual 1, 2, 3...
+    Worksheets(lPlanAtual).Activate
+              'O método .Protect proteje a planilha passando os parâmetros para proteger
+              'objetos de desenho, conteúdo, cenários e passando o password digitado
+    ActiveSheet.Protect DrawingObjects:=True, Contents:=True, Scenarios:=True, Password:=lPass
+               'Muda o índice para passar para a próxima planilha
+    lPlanAtual = lPlanAtual + 1
+    Wend
+               'O método MsgBox exibe um formulário de aviso ao usuário.
+    MsgBox "Planilhas protegidas!"
+End Sub
+''''''''''''''''''''''''''''''''''''''''
+5 - Feche a janela do Visual Basic e edite o nome do botão. Após, com a criação da macro concluída, devemos aplicá-la a este botão e para isso, clique com o botão direito do mouse sobre ele e opte por Atribuir macro...
+6 - Selecione a macro criada e confirme.
+7 - Agora, devemos criar o botão para Desproteger Planilha. Proceda da mesma maneira, só que ao invés do comando anterior, crio o seguinte:
+''''''''''''''''''''''''''''''''''''''''
+Sub lsDesprotegerTodasAsPlanilhas()
+                    'Declara as variáveis necessárias
+   Dim lPass As String
+   Dim lQtdePlan As Integer
+   Dim lPlanAtual As Integer
+                    'Solicita a senha
+                    'O método InputBox é utilizado para solicitar um valor através de um formulário
+   lPass = InputBox("Desproteger todas as planilhas:", "Senha", ActName)
+                    'Inicia as variáveis
+                    'O método Worksheets.Count passa a quantidade de planilhas existentes no arquivo
+   lQtdePlan = Worksheets.Count
+   lPlanAtual = 1
+                    'Loop pelas planilhas
+                     'A função While realiza um loop de código enquanto não passar por todas as planilhas contadas
+   While lPlanAtual <= lQtdePlan
+                    'O método Worksheets(lPlanAtual).Activate ativa a planilha conforme o índice atual 1, 2, 3...
+   Worksheets(lPlanAtual).Activate
+                     'O método .UnProtect desprotege a planilha
+   ActiveSheet.Unprotect Password:=lPass
+                     'Muda o índice para passar para a próxima planilha
+   lPlanAtual = lPlanAtual + 1
+   Wend
+                       'O método MsgBox exibe um formulário de aviso ao usuário.
+   MsgBox "Planilhas desprotegidas!"
+End Sub
+''''''''''''''''''''''''''''''''''''''''
+8 - Feche a janela do Visual Basic, dê um nome para o botão e atribua a nova macro para ele.
+9 - Agora, ao clicar no botão de Proteger, lhe pedirá uma senha para a proteção, opte por uma senha e confirme.
+10 - Perceba que a planilha estará bloqueada, somente disponível para visualização, estando todas as suas ferramentas inutilizadas. E, para que possa desbloqueá-la, clique no botão de Desproteger Planilha, digite a senha escolhida anteriormente e confirme.

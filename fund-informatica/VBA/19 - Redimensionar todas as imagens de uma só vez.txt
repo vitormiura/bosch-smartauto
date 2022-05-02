@@ -1,0 +1,44 @@
+Vá até a seção de edição de VBA através do atalho Alt + F11. No menu à esquerda clique com o botão direito em 'Microsoft Excel Objetos' e vá em 'inserir' e depois em 'módulo'.
+Nesta nova janela você vai colocar o código
+''''''''''''''''''''''''''''''''''''''''
+Sub AjustaTamanho()
+     For Each sh In ActiveSheet.Shapes
+        If sh.Name Like "*Pict*" Then
+        ActiveSheet.Shapes.Range(Array(sh.Name)).Select
+          With Selection
+            .Top = sh.TopLeftCell.Top
+            .Left = sh.TopLeftCell.Left
+            .ShapeRange.Height = 150
+            .ShapeRange.Width = 180
+          End With
+        End If
+    Next
+End Sub 
+''''''''''''''''''''''''''''''''''''''''
+Note que este código contém algumas particularidades, vamos a elas:
+1 - O Excel irá sempre fazer o redimensionamento PROPORCIONAL e para isso utilizará somente 1 dos aspectos, ou altura ou largura.
+Você irá informar qual deseja através das seguintes linhas:
+''''''''''''''''''''''''''''''''''''''''
+...
+.ShapeRange.Height = 150
+.ShapeRange.Width = 180
+...
+''''''''''''''''''''''''''''''''''''''''
+A primeira delas diz respeito à altura, e a segunda à largura. Por padrão o Excel escolherá SEMPRE aquela que está mais abaixo, ou seja, largura, no caso do exemplo acima. Mas e se você quiser utilizar a altura, ou seja, a linha de cima?
+Neste caso é só fazer ele ignorar a linha de baixo. E isso é bem fácil, você só precisa colocar uma aspa simples (‘) antes do início da linha. Veja que ela, inclusive, muda para a cor verde.
+''''''''''''''''''''''''''''''''''''''''
+...
+.ShapeRange.Height = 150
+'.ShapeRange.Width = 180
+...
+''''''''''''''''''''''''''''''''''''''''
+2 - Segundo nosso código o Excel está programado para alinhar a imagem ao canto superior esquerdo da célula que que o mesmo canto estiver posicionado.
+Confira no exemplo abaixo que a foto estava com o canto sobre a célula C3 e após usarmos a VBA ela foi alinhada. 
+Se quiser que isso não ocorra, você já sabe é só fazer ele ignorar as respectivas linhas com a nossa conhecida aspa simples:
+''''''''''''''''''''''''''''''''''''''''
+...
+'.Top = sh.TopLeftCell.Top
+'.Left = sh.TopLeftCell.Left
+...
+''''''''''''''''''''''''''''''''''''''''
+Para testar basta inserir diversas imagens de diferentes tamanhos em sua planilha e executar a macro.

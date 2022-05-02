@@ -1,0 +1,28 @@
+Como exemplo, teremos um lista de alunos de uma determina instituição, onde a mesma pretende realizar um sorteio dentre estes. Para isso, necessita-se desta ferramenta para facilitar e customizar o sorteio.
+1- Abra um documento Excel e edite as seguinte informações:
+  Título: SORTEIO ESCOLAR
+  Caixa em branco (de preferência na célula G7): reservada para o aparecimento do nome sorteado.
+  Nas abas da Plan1 e Plan2 renomear, respectivamente, Sorteio e Lista.
+  Dispor os nomes que serão sorteados na planilha Lista (no exemplo foram utilizados 80 nomes)
+  Escolha uma coloração para o fundo da planilha Sorteio e outra distinta para a célula que retornará o resultado.
+2- Vamos agora criar um botão, ao qual servirá para dar partida ao sorteio. Clique em Inserir, a partir da aba Desenvolver, onde deverá escolher o botão. Crie-o do tamanho desejado.
+3- Ao demarcar a criação, retornará uma janela para escolha da macro; opte por Novo e cole o seguinte comando na caixa de edição:
+''''''''''''''''''''''''''''''''''''''''
+Public Sub AleatorioEntreFixo()
+        Dim lUltimaLinhaAtiva As Long
+              Application.Volatile
+              lUltimaLinhaAtiva = Worksheets("Lista").Cells(Worksheets("Lista").Rows.Count, 1).End(xlUp).Row
+        For i = 1 To 100
+              Range("G7").FormulaR1C1 = "=VLOOKUP(RANDBETWEEN(1," & lUltimaLinhaAtiva & "),Lista!C[-6]:C[-5],2,0)"
+        Next i
+        Range("G7").Select
+        Selection.Copy
+        Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+               :=False, Transpose:=False
+        Application.CutCopyMode = False
+End Sub
+''''''''''''''''''''''''''''''''''''''''
+4- Feche a janela de edição e modifique o nome do botão criado para SORTEAR, formatando-o como preferires.
+5- Contudo, devemos atribuir a macro ao botão criado e, para isso, clique com o botão direito do mouse sobre ele e selecione Atribuir macro... optando pela mesma na janela que retornará.
+6- Ao clicar no botão, veja que o sorteio será realizado, portanto, a letra do nome retornado estará  muito pequena, por isso, selecione-a e formate-a como preferires.
+Enfim, toda vez que clicares no botão de sorteio, o mesmo irá procurar dentre os nomes contidos na planilha lista, de forma aleatória, um para ser sorteado. Com este comando é possível realizar outras tarefas, como outras ações que necessitam da escolha de objetos aleatórios, por exemplo, tornando o seu trabalho muito mais divertido.

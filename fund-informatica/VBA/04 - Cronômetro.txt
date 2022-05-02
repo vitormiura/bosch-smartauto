@@ -1,0 +1,58 @@
+No Excel disponha as informações I3 = "Início", J3 = "Fim" e K3 = "Tempo decorrido".
+Na aba Desenvolvedor, opção Inserir, selecione o ícone de botão de comando.
+Crie o botão "Start" e na janela de atribuição da macro que surgirá, opte por "Novo":
+Na janela de comando, digite o seguinte:
+''''''''''''''''''''''''''''''''''''''''
+Sub Botão1_Clique()
+    Application.ScreenUpdating = False                          'Congela atualizações gráficas
+    ActiveSheet.Shapes.Range(Array("Button 3")).Select          'Seleciona o Botão 3
+    If Selection.Characters.Text = "Stop" Then                  'Verificação de status de execução
+        If Range("j4").Value = "" Then                          'Verificação da primeira contagem
+            Range("j4").Value = Time
+            Range("l3").Select
+            Selection.Copy
+            Range("k4").Select
+            ActiveSheet.Paste
+            Range("k4").Formula = "=j4-i4"
+        Else
+            Range("j3").End(xlDown).Offset(1, 0).Value = Time   'indica a primeira linha não preenchida
+            Range("k3").End(xlDown).Select                      'Seleciona a última linha da tabela
+            Selection.Copy
+            Selection.Offset(1, 0).Select
+            ActiveSheet.Paste
+        End If
+        ActiveSheet.Shapes.Range(Array("Button 3")).Select
+        Selection.Characters.Text = "Start"                     'Altera o texto do Botão 3
+        Range("i3").End(xlDown).Offset(1, 0).Select
+    Else
+        ActiveSheet.Shapes.Range(Array("Button 3")).Select
+        Selection.Characters.Text = "Stop"
+        If Range("i4").Value = "" Then                          'Verificação da primeira contagem
+            Range("i4").Value = Time
+            Range("j4").Select
+        Else
+            Range("i3").End(xlDown).Offset(1, 0).Value = Time
+            Range("j3").End(xlDown).Offset(1, 0).Select
+        End If
+    End If
+    Application.CutCopyMode = False
+    Application.ScreenUpdating = True
+End Sub
+''''''''''''''''''''''''''''''''''''''''
+Fecha a edição e volte ao ícone criado, clicando com o botão direito do mouse sobre ele e atribuindo a macro.
+Faça o botão "Reset" e crie uma macro com o seguinte comando, atribuindo-a o código:
+''''''''''''''''''''''''''''''''''''''''
+Sub Botão2_Clique()
+    Application.ScreenUpdating = False
+    Range("i4", Range("i4").End(xlDown).End(xlToRight)).Select
+    Selection.Clear
+    Columns("I:K").Select
+    Application.CutCopyMode = False
+    Selection.NumberFormat = "h:mm:ss;@"                        'Define formato das células da tabela
+    Range("i4").Select
+    Application.ScreenUpdating = True
+End Sub
+''''''''''''''''''''''''''''''''''''''''
+Ao clicar no botão Start a contagem se iniciará e, para cessá-la, deve-se clicar no mesmo botão, agora com a nomenclatura Stop. Já, para limpar todos os resultados, clique Reset e a tabela ficará novamente em branco.
+Caso o tempo final apareça trocado, basta personalizá-lo com o formato Hora, contido no quadro Número da aba Início.
+Agora, estando pronto seu cronômetro, você pode adicionar colorações às células, colocar imagens, enfim, usar a criatividade a fim de fazer sua tabela mais bonita.

@@ -1,0 +1,14 @@
+Para isso vamos usar uma simples rotina no VBA. Começando: Após abrir o sistema de edição de VBA’s e dê um duplo clique em "EstaPasta_de_Trabalho" e uma nova janela será aberta. Será nela que vamos colocar o código.
+
+''''''''''''''''''''''''''''''''''''''''
+Private Sub Workbook_BeforeSave(ByVal SaveAsUI As Boolean, Cancel As Boolean)
+   If SaveAsUI = True Then
+     Cancel = True
+     Application.EnableEvents = False
+     ThisWorkbook.Save
+             MsgBox "A Opção 'Salvar Como' está desabilitada!"
+      Application.EnableEvents = True
+   End If
+End Sub
+''''''''''''''''''''''''''''''''''''''''
+Toda vez que seu usuário tentar salvar uma cópia dessa planilha, a seguinte exibirá a mensagem no código.

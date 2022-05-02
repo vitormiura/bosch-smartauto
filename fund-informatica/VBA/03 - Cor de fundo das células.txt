@@ -1,0 +1,14 @@
+No Visual Basic, na janela de edição de comandos, dê um duplo clique em Plan1 e cole o comando que segue:
+''''''''''''''''''''''''''''''''''''''''
+Dim lTarget As Range
+
+Private Sub Worksheet_SelectionChange(ByVal Target As Range)
+   If Not lTarget Is Nothing Then
+      lTarget.Interior.ColorIndex = 0
+   End If
+
+   Target.Interior.ColorIndex = 6
+
+   Set lTarget = Target
+End Sub
+''''''''''''''''''''''''''''''''''''''''

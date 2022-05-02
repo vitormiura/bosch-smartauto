@@ -1,0 +1,83 @@
+Vamos abrir nossa janela de edição de códigos com o alt + F11, dar 2 cliques em "EstaPasta_de_trabalho" e colar o seguinte:
+''''''''''''''''''''''''''''''''''''''''
+Private Declare Function ScriptInternet _
+Lib "shell32.dll" Alias "ShellExecuteA" (ByVal hWnd As Long, _
+ByVal Operation As String, ByVal Filename As String, _
+Optional ByVal Parameters As String, Optional ByVal Directory As String, _
+Optional ByVal WindowStylw As Long = vbMinimizedFocus) As Long 
+
+Private Sub Workbook_Open()
+
+   Call 'nome da função'
+
+End Sub
+''''''''''''''''''''''''''''''''''''''''
+A primeira parte é essencial e é necessária para chamar as bibliotecas que executarão a operação. Caso você tenha instalado o Office de 64 bits terá problema, pois ele não executa essas bibliotecas.
+Solução: https://www.aprenderexcel.com.br/2016/dicas/problemas-de-compatibilidade-entre-32-e-64-bits
+Logo abaixo temos o "call ‘nome da função. Ali colocaremos, por exemplo, "abrir". Essa será a função a ser chamada. Logo abaixo, então, na mesma janela, iremos declarar esta função.
+''''''''''''''''''''''''''''''''''''''''
+Public Sub Abrir()
+
+   Dim iAcesso As Long
+   iAcesso = ScriptInternet(0, "Open", "www.google.com.br")
+
+End Sub
+''''''''''''''''''''''''''''''''''''''''
+pode configurar outras funções, como por exemplo, abrir o Internet Explorer ao invés do site. É só fazer algumas alterações na parte final e pronto:
+''''''''''''''''''''''''''''''''''''''''
+Public Sub AbrirIE()
+
+   Dim iAcesso As Long
+   iAcesso = ScriptInternet(0, "Open", "C:Program Files (x86)Internet Exploreriexplore.exe")
+
+End Sub
+''''''''''''''''''''''''''''''''''''''''
+Mas e aí, serve só para "abrir coisas"? Não, você pode configurar também para ser exibida uma mensagem de boas-vindas. O código seria:
+''''''''''''''''''''''''''''''''''''''''
+Public Sub Mensagem()
+
+   Dim iAcesso As Long
+   MsgBox "Seja bem vindo ao Microsoft Excel!"
+
+End Sub
+''''''''''''''''''''''''''''''''''''''''
+Executando evento ao fechar planilha
+Aqui a configuração será quase igual, e você só mudará 1 campo. Note que antes, escrevíamos Private Sub Workbook_Open(). O que vamos fazer é apenas mudar essa linha para Private Sub Workbook_BeforeClose(Cancel As Boolean). O resto fica igual.
+Confira um código completo para salvar a planilha antes de fechar e garantir que nenhuma alteração será perdida:
+''''''''''''''''''''''''''''''''''''''''
+Private Declare Function ScriptInternet _
+Lib "shell32.dll" Alias "ShellExecuteA" (ByVal hWnd As Long, _
+ByVal Operation As String, ByVal Filename As String, _
+Optional ByVal Parameters As String, Optional ByVal Directory As String, _
+Optional ByVal WindowStylw As Long = vbMinimizedFocus) As Long
+
+Private Sub Workbook_BeforeClose(Cancel As Boolean)
+   Call salvar
+End Sub
+
+Public Sub salvar()
+   Dim iAcesso As Long
+   ThisWorkbook.Save
+End Sub
+''''''''''''''''''''''''''''''''''''''''
+E se você quisesse dar uma mensagem de tchau ao usuário poderia fazer com este código:
+''''''''''''''''''''''''''''''''''''''''
+Public Sub tchau()
+   Dim iAcesso As Long
+   MsgBox "Até mais =D"
+End Sub
+''''''''''''''''''''''''''''''''''''''''
+As possibilidades são ilimitadas.
+Recursos de tempo
+Além disso é possível programar para executar a operação com critérios de tempo. Por exemplo, chamar a mensagem de bem-vindo após 10 segundos que a planilha for executada.
+Já explicamos como fazer este processo aqui, então não vamos aprofundar a discussão. Vamos apenas mostrar na prática o exemplo acima:
+''''''''''''''''''''''''''''''''''''''''
+Private Sub Workbook_Open()
+   Call timer
+End Sub
+
+Public Sub timer()
+   Application.OnTime Now + TimeValue("00:00:10"), "mensagem" ' tempo esperado até a execução da função
+End Sub
+''''''''''''''''''''''''''''''''''''''''
+A única diferença é que a função "mensagem" deverá estar em um MÓDULO.

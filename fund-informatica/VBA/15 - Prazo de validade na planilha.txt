@@ -1,0 +1,19 @@
+funciona da seguinte forma: Você escolhe uma data, como por exemplo, o último dia do mês. Após esta data o arquivo não será executado. Simples assim, venceu a validade. E mesclando alguns códigos podemos, inclusive, fazer a mesma se excluir sozinha. 
+Como as VBAs podem conter códigos maliciosos, o Windows, por segurança, as mantém bloqueadas até que o usuário as habilite. Isso pode ser muito ruim, pois imagine a situação: Você faz uma planilha com a macro de data de validade, afinal, possui dados que não quer que sejam distribuídos por aí, mas, o usuário não ativa as macros, e, com isso, ela pode ser acessado após a data limite. Não serviu de nada a VBA, certo?
+forçar a execução de uma macro no Excel
+Pressione alt + F11 para abrir a edição de códigos e em EstaPasta_de_trabalho cole o código:
+''''''''''''''''''''''''''''''''''''''''
+Private Sub Workbook_Open()
+    Application.EnableCancelKey = xlDisabled
+
+    Dim dt As Date
+
+    'Escolha a data em a Pasta de Trabalho deverá expirar (ano, mês, dia)
+     dt = DateSerial(2015, 6, 29) 'data limite no formato americano (ano, mês, dia)
+     If Date >= dt Then
+     MsgBox "Esta Pasta de Trabalho expirou! Favor contatar o administrador."
+  ThisWorkbook.Close SaveChanges:=False
+  End If
+End Sub
+''''''''''''''''''''''''''''''''''''''''
+Veja que no nosso código a planilha está configurada para fechar automaticamente ao verificar que a data não é válida. E mais, se você colocar o código para excluir a planilha automaticamente, a planilha irá ser apagada sem a vontade do usuário.
