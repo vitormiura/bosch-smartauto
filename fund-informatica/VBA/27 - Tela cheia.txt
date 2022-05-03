@@ -1,0 +1,9 @@
+Alt + F11 para entrar na janela de edição. Agora dê 2 cliques em "EstaPasta_de_trabalho" no menu à esquerda e insira o seguinte código:
+''''''''''''''''''''''''''''''''''''''''
+sub workbook_open()
+    Application.DisplayFullScreen = True
+end sub
+''''''''''''''''''''''''''''''''''''''''
+Pronto, agora salve a sua planilha com a opção "Pasta de Trabalho Habilitada para Macro do Excel".
+Dá próxima vez que você abrir o arquivo será necessário habilitar as macros naquele arquivo.
+Agora para sair dessa telacheia é só apertar Esc. Mas e para voltar, precisa fechar o arquivo e abrir de novo? Não, para facilitar vamos criar um atalho para a Macro: Aperte Alt + F8. Na janelinha que aparecer vá em "Opções..." e escolha qual o atalho desejado para essa macro. Ou então, se preferir, clique em "Executar" para que ela seja feita na hora e seu Excel fique em tela cheia.

@@ -1,0 +1,34 @@
+No editor VBA, clique em "Inserir" e depois em "UserForm".
+Nesta tela o primeiro passo será clicar em "Categorizado" no menu inferior e na guia "Caption" substituir por "Aguarde atualizando dados …"
+O próximo passo será clicar na guia "Ferramentas" e então "Referências" na nova janela que aparecer você deverá procurar por "Microsoft Internet Controls" e marcar a caixinha de seleção ao lado, depois dê Ok.
+Clique agora com o direito dentro da caixa de ferramentas do UserForm1 e clique em "Controles Adicionais" na caixa que se abrirá procure por "Microsoft Web Browser" e marque-a.
+Ótimo, repare que um novo botão foi adicionado à caixa de ferramentas, pois vamos usá-lo. Clique nele e crie uma área preta dentro do quadro chamado "Aguarde atualizando dados...". O tamanho que você fizer esta área será o tamanho que sua Tela de Abertura será mostrada, portanto faça em um tamanho adequado.
+Agora vamos começar a edição com as linhas de códigos, muita atenção a esta parte, pois uma letra errada irá comprometer todo o seu trabalho, portanto, utilize o comando copiar e colar.
+Primeiro clique com o botão direito em "UserForm1" no menu superior esquerdo da tela, depois clique em "Exibir Código". Mais uma tela em branco será exibida, nela você irá colar o seguinte código:
+''''''''''''''''''''''''''''''''''''''''
+Private Sub Workbook_Open()
+    UserForm1.Show
+End Sub
+ 
+Private Sub UserForm_Activate()
+    WebBrowser1.Navigate "ENDEREÇO COMPLETO DA IMAGEM QUE SERÁ EXIBIDA"
+    Application.OnTime Now + TimeValue("00:00:02"), "FechaForm" 'Repare que aquele 2 corresponde aos segundos que o form ficará aberto
+End Sub
+''''''''''''''''''''''''''''''''''''''''
+Repare que entre as aspas deverá estar o endereço completo da imagem no seu computador, veja no exemplo abaixo como fizemos aqui no nosso exemplo: "c:\Users\ffr9ca\Images\imagem.gif
+Neste momento já é possível aperta a tecla F5 e ver uma prévia do que será exibido, use este comando para ajustar aquela área preta criada anteriormente ao tamanho da imagem de boas vindas.
+Para finalizar, dê um duplo clique em "EstaPasta_de_trabalho" no menu superior esquerdo para abrir a edição do seu código, nele você irá colar o seguinte:
+''''''''''''''''''''''''''''''''''''''''
+Private Sub Workbook_Open()
+      UserForm1.Show
+End Sub
+''''''''''''''''''''''''''''''''''''''''
+Cuide os detalhes: No canto superior esquerdo do código deve estar selecionado "Workbook" e no direito "open".
+Agora só falta 1 coisinha: Definir um tempo de fechamento, certo? Do contrário a tela ficará para sempre sendo exibida, ou até que o usuário clique no "X", mas clicar para fechar não é muioto legal, pois ela tem de ser automática. Para isso vamos fazer o seguinte: Clique na guia "Inserir" e depois em "Módulo", na janela de edição que se abrir cole o seguinte código: 
+''''''''''''''''''''''''''''''''''''''''
+Sub FechaForm()
+     unload UserForm1
+End Sub
+''''''''''''''''''''''''''''''''''''''''
+Lembra que anteriormente definimos no código que o formulário seria fechado após 2 segundos? Pois é esse comando que chama o "fechamento" das boas vindas. Se você quiser mais tempo do que 2 segundos é só editar a linha de código correspondente.
+Pronto. Agora salve sua planilha como Pasta de Trabalho habilitada para macro e toda vez que sua planilha for aberta será exibida a tela de inicialização e atualizadas as referências com outras planilhas, caso existam.
