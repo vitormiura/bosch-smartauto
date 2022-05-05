@@ -6,7 +6,7 @@ class Cliente:
         
     @property
     def nome(self):
-        return self.__nome.title()
+        return self.__nome.capitalize()
     
     @nome.setter
     def nome(self, new):
