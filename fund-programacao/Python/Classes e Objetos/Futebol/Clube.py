@@ -1,4 +1,5 @@
 class Clube:
+    lista_clubes = []
     def __init__(self, nome, verba):
         self.nome = nome
         self.__jogadores = []
@@ -7,6 +8,7 @@ class Clube:
     @property
     def verba(self):
         return self.__verba
+    
     @verba.setter
     def verba(self, valor, operacao):
         if operacao == 1:
@@ -17,6 +19,7 @@ class Clube:
     @property
     def jogadores(self):
         return self.__jogadores
+    
     @jogadores.setter
     def jogadores(self, jogador):
         self.__jogadores.append(jogador)

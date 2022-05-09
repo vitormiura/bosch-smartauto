@@ -1,13 +1,16 @@
+import sys
 from Clube import Clube
 from ControlaId import ControlaId
+from ControlaIdClube import idClube as idC
 from Jogador import Jogador
-from ListaJogadores import ListaJogadores
+#from ListaJogadores import ListaJogadores
+#from ListaClubes import ListaClubes
 
 
 def main():
     controlador = True
     # jogador = Jogador("Ricardo", 22, "Centro avante", 3000, 12)
-    clube = Clube("Palmeiras", 200000)
+    # clube = Clube("Palmeiras", 200000)
 
     while controlador:
         print("-"*20)
@@ -20,24 +23,28 @@ def main():
         print("6-Sair do programa")
 
 
-        opcao = int(input("Escolha a opção desejada: "))
+        op = int(input("Escolha a opção desejada: "))
 
-        if opcao == 1:
+        if op == 1:
             id = int(input("Digite o ID do jogador: "))
+            if id in Jogador.lista_jogadores:
+                jogador = Jogador.lista_jogadores[id - 1] 
+                Clube.jogadores.setter(jogador)
+                
+            else:
+                print('id nao existente')
 
-            jogador = ListaJogadores.lista_jogadores[id - 1]
-            print(jogador)
+            # idClube = int(input("Digite o ID do seu clube: "))
+            # clube = Clube.lista_clubes[idClube-1]
+            # print(clube)
 
-            idClube = int(input("Digite o ID do seu clube: "))
-
-
-        if opcao == 2:
+        if op == 2:
             nome = input("Digite o nome do jogador: ")
             idade = int(input("Digite a idade do jogador: "))
             posicao = input("Digite a posição do jogador: ")
             salario = input("Digite o salário do jogador: ")
             numero = int(input("Digite o número do jogador: "))
-            clubeBool = input("O jogador tem clube?S/N: ")
+            clubeBool = input("O jogador tem clube? (S/N): ")
 
             if(clubeBool.upper() == "S"):
                 clubeBool = True
@@ -49,19 +56,37 @@ def main():
             ControlaId.id = id
             jogador = Jogador(id, nome, idade, posicao, salario, numero, clubeBool)
 
-            ListaJogadores.lista_jogadores.append(jogador)
+            #ListaJogadores.lista_jogadores.append(jogador)
+            Jogador.lista_jogadores.append(jogador)
 
-        if opcao == 3:
+        if op == 3:
             id = int(input("Digite o ID do jogador: "))
-            jogador = ListaJogadores.lista_jogadores[id - 1]
-            print(jogador.info())
-        if opcao == 4:
-            for i in ListaJogadores.lista_jogadores:
+            if id in Jogador.lista_jogadores:
+                jogador = Jogador.lista_jogadores[id - 1]
+                print(jogador.info())
+            else: 
+                print("ID do jogador não encontrado")            
+
+        if op == 4:
+            for i in Jogador.lista_jogadores:
                 if i.temClube == False:
                     print(i)
                     
-        #if opcao == 5:
+        if op == 5:
+            club = input("Digite o nome do novo clube: ")
+            verba = int(input("Digite o verba disponivel do clube: "))
             
+            id = idC.id
+            id = id + 1
+            idC.id = id
+            
+            clube = Clube(club, verba)
+            # ListaClubes.lista_clubes.append(clube)
+            Clube.lista_clubes.append(clube)
+        
+        if op == 6:
+            sys.exit()
+
 main()
 
 
