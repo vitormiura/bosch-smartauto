@@ -1,13 +1,19 @@
+import java.util.Scanner;
 
 public class tabuadaWhile {
     public static void main(String[] args) throws Exception {
-        int count = 1;
-        int mult[] = {1,2,3,4,5,6,7,8,9,10};
-        
-            System.out.println("-------------------------------");
-        while (count <= 10 ) {
-            System.out.println(mult + " x " + count + " = " + count * mult);
-            count++;
+        int userNum;
+        int mult = 0;
+        int total = 0;
+    
+    
+        Scanner input = new Scanner(System.in);
+        System.out.println("Informe um número: ");
+        userNum = input.nextInt();
+    
+        for (int x = 0; x < 10; x++) {
+            total = userNum * ++mult;
+            System.out.println(userNum + " x " + mult + " = " + total);
         }
     }
 }
