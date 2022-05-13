@@ -6,33 +6,44 @@ class Avaliacao():
         self.__nota = nota
         self.__feedback = feed
         
+    
+    def showAva(self, a):
+            f = open("ava.txt", "r").read() 
+            separe = f.replace('\n', '')
+            teste=separe.split("#")    
+            #word = str(teste).split("#") 
+            #print(teste)
+            #word = str(teste).split(";")
+            kk = str(a)
+
+            cont = -1
+            for i in teste:
+                cont = cont + 1
+                if i == kk:
+                    word = str(teste).split(";")
+                    print(teste[cont + 1])
+                
+
+
+
     @property
     def avaAdd(self):
-        f = open("palavras.txt", "r", encoding='utf-8').read() 
-        arte = f.replace('\n', '').split(",")
+        return self.__nome, self.__nota, self.__feedback
 
-    @avaAdd.setter
-    def avaAdd(self, id, nome, nota, feed):
-        with open('avaliacoes.txt', 'a', encoding='utf-8') as p:
+    #@avaAdd.setter
+    def avaAdd(self, id, new, new2, new3):
+        self.__nome = new
+        self.__nota = new2
+        self.__feedback = new3
+        with open('ava.txt', 'a', encoding='utf-8') as a:
             while True:
-                p.write("\n"+id +nome+":"+nota+","+ feed+",")
-                p.close()
+                a.write("\n"+"#"+str(id)+"#"+" "+new+":"+str(new2)+","+ new3+";")
+                a.close()
                 print('AVALIACAO ADICIONADA COM SUCESSO!')
     
 
-
-
-
-
-
-
-
-
-
-
-class idAva:
-    id1 = 1
-    def set_id(self):
-        id1 += 1
-        return id1
-    
+# class idAva:
+#     id1 = 1
+#     def set_id(self):
+#         id1 += 1
+#         return id1

@@ -1,3 +1,6 @@
+from base64 import encode
+
+
 class Arte():
     lista_artes = []
     def __init__(self, id, nome, obra):
@@ -5,28 +8,32 @@ class Arte():
         self.__nome = nome
         self.__obra = obra
 
-    # @property
-    # def pictures(self):
-    #     for i in self.__pinturas:
-    #         print('Nome da obra: ' + i)
-    #         print(self.__pinturas[i])
-    #     return self.__pinturas
+    # def showArt(self, i):
+    #         f = open("pinturas.txt", "r").read() 
+    #         separe = f.replace('\n', '')
+    #         teste=separe.split(";")    
+    #         word = str(teste).split("#") 
 
-    # @property
-    # def artAdd(self):
-    #     f = open("palavras.txt", "r", encoding='utf-8').read() 
-    #     arte = f.replace('\n', '').split(",")
+    #         for i in word:
+    #             print(i, end='')
+
+    @property
+    def show(self):
+        with open('pinturas.txt', 'r') as arquivo:
+            for i in arquivo:
+                print(i, end='')
+
     @property
     def artAdd(self):
         return self.__nome, self.__obra
 
-    @artAdd.setter
+    #@artAdd.setter
     def artAdd(self, id, new, new2):
         self.__nome = new
         self.__obra = new2
         with open('pinturas.txt', 'a', encoding='utf-8') as p:
             while True:
-                p.write("\n"+id +new+":"+"\n"+new2+",")
+                p.write("\n"+str(id)+""+" "+new+":"+"\n"+new2+";"+"\n")
                 p.close()
                 print('ARTE ADICIONADA COM SUCESSO!')
 

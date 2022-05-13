@@ -1,0 +1,7 @@
+
+#1# Vitor:10,Muito Boa;
+#1# Gustavo:10,Ruim;
+#2# Balta:100,Muito TOPP;
+#1# Antonio:10,Boa;
+#1# Giovanna:100,muito ruim;
+#3# a:1,legal;

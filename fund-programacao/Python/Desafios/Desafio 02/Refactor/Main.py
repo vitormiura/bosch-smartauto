@@ -24,7 +24,7 @@ def op_menu(op):
         idArt.id = id
 
         arte = Arte(id, nome, obra) #instancia
-        arte.artAdd = id, nome, obra #adiciona ao txt
+        arte.artAdd(id, nome, obra) #adiciona ao txt
         Arte.lista_artes.append(arte) #append em lista com artes
 
     elif op == 2:
@@ -36,23 +36,21 @@ def op_menu(op):
         nota = int(input("Dê uma nota para essa arte: \n"))
         feed = input("Digite o Feedback para essa obra: \n")
 
-        id = idAva.id
-        id = id + 1
-        idAva.id = id
-
-        avaliacao = Avaliacao(id, nome, nota, feed)
-        avaliacao.avaAdd = id, nome, nota, feed
-        Avaliacao.lista_avaliacoes.append(avaliacao)
-
-
-        #if choose in Arte.lista_artes:
-            #arte = Arte.lista_artes[id - 1] 
+        avaliacao = Avaliacao(choose, nome, nota, feed) #instancia
+        avaliacao.avaAdd(choose, nome, nota, feed) #add ao txt
+        Avaliacao.lista_avaliacoes.append(avaliacao) #append em listo com artes
 
 
     elif op == 3:
         print("\n\033[92m{----Exibindo Artes/Avaliações----}\033[00m")
-        mostrar_arte = int(input("Digite o id da obra que desejas ver a(s) avaliacao(aos): \n"))
-        return mostrar_arte
+        oi = int(input("Digite o id da obra que desejas ver a(s) avaliacao(aos): \n"))
+
+        #arte = Arte(None, None, None)
+        #arte.show()
+        print("\n")
+        avaliacao = Avaliacao(None, None, None, None)
+        avaliacao.showAva(oi)
+        
 
     elif op == 0:
         print("\033[93mPrograma Finalizado!\033[00m")
