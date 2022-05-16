@@ -1,7 +1,13 @@
+import java.util.ArrayList;
+//import java.util.Scanner;
+
 public class Restaurante {
     String name;
     String cnpj;
     String loc;
+
+    Lanche lanche;
+    ArrayList<Lanche> card = new ArrayList<>();
 
     public Restaurante(String name, String cnpj, String loc){
         this.name = name;
@@ -10,12 +16,23 @@ public class Restaurante {
     }
 
     void addLanche(Lanche lanche){
-        
+        this.card.add(lanche);
     }
-    void rmvLanche(Lanche lanche){
-        
+
+    void remoLanche(Lanche lanche){
+        this.card.remove(lanche);
     }
-    void cardapio(){
-        
+
+    ArrayList<ArrayList> printCard(){
+        ArrayList<ArrayList> lanches = new ArrayList<>();
+        for(Lanche lanche : card){
+            ArrayList<Object> lancheArray = new ArrayList<>();
+            lancheArray.add(lanche.name);
+            lancheArray.add(lanche.price);
+            lanches.add(lancheArray);
+        }
+        return lanches;
     }
+
+    
 }
