@@ -17,13 +17,18 @@ public class Restaurante {
 
     void addLanche(Lanche lanche){
         this.card.add(lanche);
+        lanche.restaurante = this;
     }
 
     void remoLanche(Lanche lanche){
         this.card.remove(lanche);
     }
 
-    ArrayList<ArrayList> printCard(){
+    void remoInd(int index){
+        this.card.remove(lanche);
+    }
+
+    public ArrayList<ArrayList> printCard(){
         ArrayList<ArrayList> lanches = new ArrayList<>();
         for(Lanche lanche : card){
             ArrayList<Object> lancheArray = new ArrayList<>();
