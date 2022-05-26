@@ -14,12 +14,11 @@ class Ui(QtWidgets.QMainWindow):
         self.show()
         
     def printButtonPressed(self):
-        print('butao')
-        velha = velha.velha_class()
-        
+        print('o')
 
-app = QtWidgets.QApplication(sys.argv)
 
-window = Ui()
-
-app.exec()
+if __name__ == "__main__":
+    app = QtWidgets.QApplication(sys.argv)
+    window = Ui()
+    
+    app.exec()
