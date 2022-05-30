@@ -24,7 +24,7 @@ public class Methods {
     public int ChooseRest(Scanner input){
         System.out.println("Selecione o restaurante: ");
         System.out.println(this.printRest());
-        int ind = Integer.parseInt(input.nextLine());
+        int ind = Integer.parseInt(input.next());
         return ind;
     }
 
@@ -81,7 +81,7 @@ public class Methods {
                 int ind = this.ChooseRest(input);
                 if (ind != -1) {
                     System.out.println("Digite o nome do pedido: ");
-                    String nomePedido = input.nextLine();
+                    String nomePedido = input.next();
                     usuario.adicionarPedido(input, nomePedido, rests.get(ind));
                 }
             }
@@ -100,43 +100,44 @@ public class Methods {
             System.out.println("Usuario ja cadastrado!");
     }
 
-    void imprimirCardapioRestaurante(Scanner input) {
+    void printCardRest1(Scanner input) {
         System.out.println("Digite o indice do restaurante para saber o cardapio: ");
         System.out.println(this.printRest());
         int ind = Integer.parseInt(input.nextLine());
         this.rests.get(ind).printCard();
     }
 
-    void imprimirCardapioRestaurante(Scanner input, int restauranteIndex) {
+    void printCardRest(Scanner input, int restauranteIndex) {
         this.rests.get(restauranteIndex).printCard();
     }
 
-    void adicionarItemsRestaurante(Scanner input, Lanche lanche) {
+    void addItemRest1(Scanner input, Lanche lanche) {
         System.out.println("Digite o indice do restaurante para adicionar o lanche: ");
         System.out.println(this.printRest());
         int ind = Integer.parseInt(input.nextLine());
         this.rests.get(ind).addLanche(lanche);
     }
 
-    void adicionarItemsRestaurante(Lanche lanche, int restauranteIndex) {
+    void addItemRest(Lanche lanche, int restauranteIndex) {
         this.rests.get(restauranteIndex).addLanche(lanche);
     }
 
-    void removerItemsRestaurante(Scanner input) {
+    void rmvItemRest1(Scanner input) {
         System.out.println("Digite o indice do rest que deseja remover o lanche: ");
         System.out.println(this.printRest());
         int resInd = Integer.parseInt(input.nextLine());
         System.out.println("Digite o indice do lanche no cardapio para remover: ");
-        this.imprimirCardapioRestaurante(input, resInd);
+        this.printCardRest(input, resInd);
         int ind = Integer.parseInt(input.nextLine());
         this.rests.get(resInd).remoInd(ind);
     }
 
-    void removerItemsRestaurante(Scanner input, int restauranteIndex) {
+    void rmvItemRest(Scanner input, int restauranteIndex) {
         System.out.println("Digite o indice do lanche no cardapio para remover: ");
-        this.imprimirCardapioRestaurante(input, restauranteIndex);
-        int ind = Integer.parseInt(input.nextLine());
-        this.rests.get(restauranteIndex).remoInd(ind);
+        System.out.println(this.printRest());
+        this.printCardRest(input, restauranteIndex);
+        int indi = Integer.parseInt(input.next());
+        this.rests.get(restauranteIndex).remoInd(indi);
     }
     public boolean userAuth(String user) {
         for (Usuario usuario : users) {

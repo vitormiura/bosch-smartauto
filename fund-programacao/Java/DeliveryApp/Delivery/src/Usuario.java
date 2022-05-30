@@ -32,7 +32,7 @@ public class Usuario {
             System.out.println("Selecione o lanche: ");
             restaurante.printCard();
             System.out.println("\nDeseja outro lanche? (s/n): ");
-            String op = input.nextLine();
+            String op = input.next();
             if (op == "n")
                 break;
         }
