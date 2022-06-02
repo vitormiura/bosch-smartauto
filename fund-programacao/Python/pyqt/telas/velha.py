@@ -56,20 +56,28 @@ class Ui_MainWindow(object):
         global pX, pO
         win, loser = '', ''
         
-        if self.pb1.text() == self.pb2.text() and self.pb2.text() == self.pb3.text():
+        #LINHA 1
+        if self.pb1.text() == self.pb2.text() and self.pb2.text() == self.pb3.text() and self.pb1.text() != '':
             win = self.pb1.text()
-        elif self.pb4.text() == self.pb5.text() and self.pb5.text() == self.pb6.text():
-            win = self.pb4.text()
-        elif self.pb7.text() == self.pb8.text() and self.pb8.text() == self.pb9.text():
-            win = self.pb7.text()
+        #LINHA 2
+        elif self.pb4.text() == self.pb5.text() and self.pb5.text() == self.pb6.text() and self.pb4.text() != '':
+            win = self.pb5.text()
+        #LINHA 3
+        elif self.pb7.text() == self.pb8.text() and self.pb8.text() == self.pb9.text() and self.pb7.text() != '':
+            win = self.pb8.text()
+        #COLUNA 1   
         elif self.pb1.text() == self.pb4.text() and self.pb4.text() == self.pb7.text():
             win = self.pb1.text()
+        #COLUNA 2
         elif self.pb2.text() == self.pb5.text() and self.pb5.text() == self.pb8.text():
             win = self.pb2.text()
+        #COLUNA 3
         elif self.pb3.text() == self.pb6.text() and self.pb6.text() == self.pb9.text():
             win = self.pb3.text()
+        #TRANSVERSAL DIRETA -> ESQUERDA
         elif self.pb1.text() == self.pb5.text() and self.pb5.text() == self.pb9.text():
             win = self.pb1.text()
+        #TRANSVERSAL ESQUERDA -> DIREITA
         elif self.pb3.text() == self.pb5.text() and self.pb5.text() == self.pb7.text():
             win = self.pb3.text()
 
@@ -93,15 +101,15 @@ class Ui_MainWindow(object):
         self.pb8.setEnabled(True)
         self.pb9.setEnabled(True)
         
-        self.pb1.setText(' ')
-        self.pb2.setText(' ')
-        self.pb3.setText(' ')
-        self.pb4.setText(' ')
-        self.pb5.setText(' ')
-        self.pb6.setText(' ')
-        self.pb7.setText(' ')
-        self.pb8.setText(' ')
-        self.pb9.setText(' ')
+        self.pb1.setText('')
+        self.pb2.setText('')
+        self.pb3.setText('')
+        self.pb4.setText('')
+        self.pb5.setText('')
+        self.pb6.setText('')
+        self.pb7.setText('')
+        self.pb8.setText('')
+        self.pb9.setText('')
     
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")

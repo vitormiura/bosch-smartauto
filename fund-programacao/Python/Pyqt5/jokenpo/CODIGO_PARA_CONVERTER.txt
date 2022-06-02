@@ -1,0 +1,1 @@
+pyuic5 -x NOME_ORIGEM.ui -o NOME_DESTINO.py
