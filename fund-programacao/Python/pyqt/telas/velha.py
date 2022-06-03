@@ -266,8 +266,11 @@ class Ui_MainWindow(object):
         self.xscore.setText(_translate("MainWindow", "Jogador (X): 0"))
         self.oscore.setText(_translate("MainWindow", "Jogador (O): 0"))
         self.reset.setText(_translate("MainWindow", "RESET"))
-        
-#def start():
+          
+class velhinha(Ui_MainWindow):
+    def __init__(self, velha):
+        self.setupUi(velha)
+
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
@@ -275,4 +278,3 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec())
-    

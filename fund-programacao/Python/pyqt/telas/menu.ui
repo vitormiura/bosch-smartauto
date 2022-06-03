@@ -40,7 +40,7 @@ color: white;</string>
      <string>Jogos</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="forcaButton">
     <property name="geometry">
      <rect>
       <x>210</x>
@@ -64,7 +64,7 @@ border-radius: 15px;</string>
      <string>Jogo da Forca</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="velhaButton">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -107,10 +107,35 @@ border-radius: 15px;</string>
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QPushButton" name="jokenpoButton">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>270</y>
+      <width>131</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Old English Text MT</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);
+border-color: rgb(255, 255, 255);
+border-radius: 15px;</string>
+    </property>
+    <property name="text">
+     <string>Jankenpon</string>
+    </property>
+   </widget>
    <zorder>label_3</zorder>
    <zorder>label</zorder>
-   <zorder>pushButton_2</zorder>
-   <zorder>pushButton_3</zorder>
+   <zorder>forcaButton</zorder>
+   <zorder>velhaButton</zorder>
+   <zorder>jokenpoButton</zorder>
   </widget>
  </widget>
  <resources/>
