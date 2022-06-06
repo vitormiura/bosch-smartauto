@@ -1,10 +1,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+import sys
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(348, 338)
-        MainWindow.setStyleSheet("background-color:rgb(255, 205, 216);")
+        MainWindow.setStyleSheet("background-color:rgb(0, 0, 0);")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
@@ -23,6 +24,7 @@ class Ui_MainWindow(object):
         font.setPointSize(14)
         self.forcaButton.setFont(font)
         self.forcaButton.setStyleSheet("color: rgb(0, 0, 0);\n"
+"background-color: rgb(255, 170, 255);\n"
 "border-color: rgb(255, 255, 255);\n"
 "border-radius: 15px;")
         self.forcaButton.setObjectName("forcaButton")
@@ -34,23 +36,25 @@ class Ui_MainWindow(object):
         self.velhaButton.setFont(font)
         self.velhaButton.setStyleSheet("border-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 0, 0);\n"
-"border-radius: 15px;")
+"border-radius: 15px;\n"
+"background-color: rgb(255, 170, 255);")
         self.velhaButton.setObjectName("velhaButton")
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
         self.label_3.setGeometry(QtCore.QRect(-60, 0, 471, 361))
         self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap("hqdefault.jpg"))
+        self.label_3.setPixmap(QtGui.QPixmap("fund-programacao\Python\pyqt\misc\hqdefault.jpg"))
         self.label_3.setScaledContents(True)
         self.label_3.setObjectName("label_3")
         self.jokenpoButton = QtWidgets.QPushButton(self.centralwidget)
-        self.jokenpoButton.setGeometry(QtCore.QRect(100, 270, 131, 51))
+        self.jokenpoButton.setGeometry(QtCore.QRect(110, 270, 131, 51))
         font = QtGui.QFont()
         font.setFamily("Old English Text MT")
         font.setPointSize(14)
         self.jokenpoButton.setFont(font)
         self.jokenpoButton.setStyleSheet("color: rgb(0, 0, 0);\n"
-        "border-color: rgb(255, 255, 255);\n"
-        "border-radius: 15px;")
+"background-color: rgb(255, 170, 255);\n"
+"border-color: rgb(255, 255, 255);\n"
+"border-radius: 15px;")
         self.jokenpoButton.setObjectName("jokenpoButton")
         self.label_3.raise_()
         self.label.raise_()
@@ -69,9 +73,9 @@ class Ui_MainWindow(object):
         self.forcaButton.setText(_translate("MainWindow", "Jogo da Forca"))
         self.velhaButton.setText(_translate("MainWindow", "Jogo da Velha"))
         self.jokenpoButton.setText(_translate("MainWindow", "Jankenpon"))
-        
+
+
 if __name__ == "__main__":
-    import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()

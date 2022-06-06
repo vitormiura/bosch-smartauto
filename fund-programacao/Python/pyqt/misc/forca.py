@@ -1,22 +1,9 @@
+import random
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
 
 class Ui_MainWindow(object):
     
-    def lifes(self, vida):
-        if vida == 6:
-            self.vida1.setVisible(True)
-        elif vida == 5:
-            self.vida2.setVisible(True)
-        elif vida == 4:
-            self.vida3.setVisible(True)
-        elif vida == 3:
-            self.vida4.setVisible(True)
-        elif vida == 2:
-            self.vida5.setVisible(True)
-        elif vida == 1:
-            self.vida6.setVisible(True)
-
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(341, 556)
@@ -172,9 +159,82 @@ class Ui_MainWindow(object):
         self.label_4.setText(_translate("MainWindow", "DICA:"))
         self.send.setText(_translate("MainWindow", "SEND"))
 
+class Forca(Ui_MainWindow):
+    global separe, sort, word, tam, chance
+    chance = 7
+    
+    def __init__(self, forca):
+        self.setupUi(forca)
+        #self.vidasTotal.show(chance)
+        self.initial()
+        self.game()
+        
+    def initial(self):
+        self.vida1.setVisible(False)
+        self.vida2.setVisible(False)
+        self.vida3.setVisible(False)
+        self.vida4.setVisible(False)
+        self.vida5.setVisible(False)
+        self.vida6.setVisible(False)
+    
+    def lifes(self, vida):
+        if vida == 6:
+            self.vida1.setVisible(True)
+        elif vida == 5:
+            self.vida1.setVisible(False)
+            self.vida2.setVisible(True)
+        elif vida == 4:
+            self.vida2.setVisible(False)
+            self.vida3.setVisible(True)
+        elif vida == 3:
+            self.vida3.setVisible(False)
+            self.vida4.setVisible(True)
+        elif vida == 2:
+            self.vida4.setVisible(False)
+            self.vida5.setVisible(True)
+        elif vida == 1:
+            self.vida5.setVisible(False)
+            self.vida6.setVisible(True)
+            
+    def game(self):
+        self.initial()
+        
+        f = open("fund-programacao\Python\pyqt\palavras.txt", "r").read() 
+        separe = f.replace('\n', '').split(";")   
+        sort = separe[random.randint(0, len(separe)-1)] #SORTEIO DA PALAVRA! 
+        word = sort.split(":") 
+        tam = len(word[0])
+        
+        dig = []
+        #chance = 7
+        
+        self.dica.setText(word[1])
+        
+        while True:
+            temp = ''
+            letra = self.input.text()
+            dig.append(letra)
+        
+            self.vidasTotal.show()
+            
+            for i in word[0]:
+                if i in dig:
+                    temp += self.mask.setText(i)
+                else:
+                    temp += self.mask.setText("#")
+
+            if temp == word[0]:
+                pass
+            elif letra == word[0]:
+                pass
+            else:
+                print(temp)
+                
+            if letra not in word[0]:
+                chance -= 1
+                self.lifes(chance)
 
 if __name__ == "__main__":
-    import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()

@@ -1,15 +1,16 @@
 from PyQt5 import QtWidgets, uic 
 import sys
-from telas import velha as vl
-from telas import menu as mn
-from telas import jokenpo as jk
+from misc import velha as vl
+from misc import menu as mn
+from misc import jokenpo as jk
+from misc import forca as frc
 
 class Menu(mn.Ui_MainWindow):
     def __init__(self, menu_principal):
         self.setupUi(menu_principal)
         self.velhaButton.clicked.connect(self.openVelha)
         self.jokenpoButton.clicked.connect(self.openJokenpo)
-        #self.forcaButton.clicked.connect(self.openVelha)
+        self.forcaButton.clicked.connect(self.openForca)
         
     def openVelha(self):
         self.game = QtWidgets.QMainWindow()
@@ -17,7 +18,9 @@ class Menu(mn.Ui_MainWindow):
         self.game.show()
     
     def openForca(self):
-        pass
+        self.game = QtWidgets.QMainWindow()
+        self.j = frc.Forca(self.game)
+        self.game.show()
     
     def openJokenpo(self):
         self.game = QtWidgets.QWidget()

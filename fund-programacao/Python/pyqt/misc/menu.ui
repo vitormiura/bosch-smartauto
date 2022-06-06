@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color:rgb(255, 205, 216);</string>
+   <string notr="true">background-color:rgb(0, 0, 0);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
@@ -57,6 +57,7 @@ color: white;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 170, 255);
 border-color: rgb(255, 255, 255);
 border-radius: 15px;</string>
     </property>
@@ -82,7 +83,8 @@ border-radius: 15px;</string>
     <property name="styleSheet">
      <string notr="true">border-color: rgb(255, 255, 255);
 color: rgb(0, 0, 0);
-border-radius: 15px;</string>
+border-radius: 15px;
+background-color: rgb(255, 170, 255);</string>
     </property>
     <property name="text">
      <string>Jogo da Velha</string>
@@ -110,7 +112,7 @@ border-radius: 15px;</string>
    <widget class="QPushButton" name="jokenpoButton">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>110</x>
       <y>270</y>
       <width>131</width>
       <height>51</height>
@@ -124,6 +126,7 @@ border-radius: 15px;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 170, 255);
 border-color: rgb(255, 255, 255);
 border-radius: 15px;</string>
     </property>
