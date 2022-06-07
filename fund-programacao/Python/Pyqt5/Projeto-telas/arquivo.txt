@@ -1,0 +1,3 @@
+abacaxi:fruta
+chevette:carro
+mesa:lugar de apoiar objetos
