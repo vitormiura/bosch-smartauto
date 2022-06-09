@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import random
 
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -246,7 +248,7 @@ def chutarLetra(label, letra):
                 vidas = vidas - 1
 
         if " _ " not in palavraOut:
-            print("Parabéns você Ganhou!!!")
+            print("Parabens você Ganhou!!!")
             break
 
 

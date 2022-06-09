@@ -1,6 +1,2 @@
-tiringa:rei do cangaco;
-bosch:multinacional;
-corinthians:maior time brasileiro;
-melancia:fruta;
-rua:calcada de carro;
-python:linguagem de programacao ou cobra;
+cadeira:sentar
+Ventilador:Usado para refrescar
