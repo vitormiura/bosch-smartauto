@@ -1,23 +1,26 @@
 import random
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
-  
-jogando = True
+
+global vida,dig,temp,word
+
+temp = ''
 vida = 7
 dig = []
+word = ''
 
 class Ui_MainWindow(object):
-    
-    def monke(self):
-        self.vida1.setVisible(False)
-        self.vida2.setVisible(False)
-        self.vida3.setVisible(False)
-        self.vida4.setVisible(False)
-        self.vida5.setVisible(False)
-        self.vida6.setVisible(False)
-    
+ 
     def lifes(self, vida):
-        if vida == 6:
+        print(vida)
+        if vida == 7:
+            self.vida1.setVisible(False)
+            self.vida2.setVisible(False)
+            self.vida3.setVisible(False)
+            self.vida4.setVisible(False)
+            self.vida5.setVisible(False)
+            self.vida6.setVisible(False)
+        elif vida == 6:
             self.vida1.setVisible(True)
         elif vida == 5:
             self.vida1.setVisible(False)
@@ -34,80 +37,113 @@ class Ui_MainWindow(object):
         elif vida == 1:
             self.vida5.setVisible(False)
             self.vida6.setVisible(True)
+            
+    def sort(self):
+        global word
+        f = open("C:\\Users\\ct67ca\\Desktop\\bosch-smartauto\\fund-programacao\\Python\\pyqt\\misc\\palavras.txt", "r").read()
+        separe = f.replace('\n', '')
+        separe = separe.split(";")   
+        sort = separe[random.randint(0, len(separe)-1)]
+        word = sort.split(":")
+        
+    def lista(self, string):
+        list1=[]
+        list1[:0]=string
+        return list1
     
-        
-    def init(self):
-        global dig, vida, word
-        print(word)
-        self.dica.setText(word[1])
-        
-        while True:
-            temp = ''
-            letra = self.input.text()
-            self.send.setText(input)
-            dig.append(letra)
+    def butao(self):
+        pass
+    
+    def game(self):
+        global dig, vida, word, temp, letra
+        #pal = self.lista(word[0])
+        temp = ''
+        letra = ''
+        letra = self.input.text()
+        dig.append(letra)
 
+        while True:
             for i in word[0]:
                 if i in dig:
                     temp += i
-                else:
-                    temp += "-"
                     
-            self.mask.setText(temp)
+                else:
+                    temp += "#"
+                    
+            print(temp)
+            
+            if temp == word[0]:
+                print('win')
+            
+            if letra == word[0]:
+                print("win")
             
             if letra not in word[0]:
-                vida -= 1     
-                self.monke(vida)      
-    
+                vida -= 1   
+                self.lifes(vida)   
+            break
+        self.mask.setText(temp)
+        self.send.clicked.connect(self.game)
+        
     def setupUi(self, MainWindow):
+        global word, temp, letra, vida
+        self.sort()
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(341, 556)
         MainWindow.setStyleSheet("background-color: rgb(250, 250, 250);\n"
         "background-color: rgb(85, 0, 127);")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+        
         self.vida1 = QtWidgets.QLabel(self.centralwidget)
         self.vida1.setGeometry(QtCore.QRect(50, 70, 231, 301))
         self.vida1.setText("")
-        self.vida1.setPixmap(QtGui.QPixmap("fund-programacao\Python\pyqt\telas\hangmonkey\macacobraco1.png"))
+        self.vida1.setPixmap(QtGui.QPixmap("C:\\Users\\ct67ca\\Desktop\\bosch-smartauto\\fund-programacao\\Python\\pyqt\\misc\\hangmonkey\\macacobraco1.png"))
         self.vida1.setScaledContents(True)
         self.vida1.setObjectName("vida1")
+        
         self.vida2 = QtWidgets.QLabel(self.centralwidget)
         self.vida2.setGeometry(QtCore.QRect(50, 70, 231, 301))
         self.vida2.setText("")
-        self.vida2.setPixmap(QtGui.QPixmap("hangmonkey/macacobracos.png"))
+        self.vida2.setPixmap(QtGui.QPixmap("C:\\Users\\ct67ca\\Desktop\\bosch-smartauto\\fund-programacao\\Python\\pyqt\\misc\\hangmonkey\\macacobracos.png"))
         self.vida2.setScaledContents(True)
         self.vida2.setObjectName("vida2")
+        
         self.vida3 = QtWidgets.QLabel(self.centralwidget)
         self.vida3.setGeometry(QtCore.QRect(50, 70, 231, 301))
         self.vida3.setText("")
-        self.vida3.setPixmap(QtGui.QPixmap("hangmonkey/macacocabeca.png"))
+        self.vida3.setPixmap(QtGui.QPixmap("C:\\Users\\ct67ca\\Desktop\\bosch-smartauto\\fund-programacao\\Python\\pyqt\\misc\\hangmonkey\\macacocabeca.png"))
         self.vida3.setScaledContents(True)
         self.vida3.setObjectName("vida3")
+        
         self.vida4 = QtWidgets.QLabel(self.centralwidget)
         self.vida4.setGeometry(QtCore.QRect(50, 70, 231, 301))
         self.vida4.setText("")
-        self.vida4.setPixmap(QtGui.QPixmap("hangmonkey/macacocorpo.png"))
+        self.vida4.setPixmap(QtGui.QPixmap("C:\\Users\\ct67ca\\Desktop\\bosch-smartauto\\fund-programacao\\Python\\pyqt\\misc\\hangmonkey\\macacocorpo.png"))
         self.vida4.setScaledContents(True)
         self.vida4.setObjectName("vida4")
+        
         self.vida5 = QtWidgets.QLabel(self.centralwidget)
         self.vida5.setGeometry(QtCore.QRect(50, 70, 231, 301))
         self.vida5.setText("")
-        self.vida5.setPixmap(QtGui.QPixmap("hangmonkey/macacoperna1.png"))
+        self.vida5.setPixmap(QtGui.QPixmap("C:\\Users\\ct67ca\\Desktop\\bosch-smartauto\\fund-programacao\\Python\\pyqt\\misc\\hangmonkey\\macacoperna1.png"))
         self.vida5.setScaledContents(True)
         self.vida5.setObjectName("vida5")
+        
         self.vida6 = QtWidgets.QLabel(self.centralwidget)
         self.vida6.setGeometry(QtCore.QRect(50, 70, 231, 301))
         self.vida6.setText("")
-        self.vida6.setPixmap(QtGui.QPixmap("hangmonkey/macacomorto.png"))
+        self.vida6.setPixmap(QtGui.QPixmap("C:\\Users\\ct67ca\\Desktop\\bosch-smartauto\\fund-programacao\\Python\\pyqt\\misc\\hangmonkey\\macacomorto.png"))
         self.vida6.setScaledContents(True)
         self.vida6.setObjectName("vida6")
+        
         self.element = QtWidgets.QLabel(self.centralwidget)
         self.element.setGeometry(QtCore.QRect(100, 10, 131, 41))
         self.element.setStyleSheet("border-radius: 15px;\n"
         "background-color: rgb(0, 0, 0);")
         self.element.setText("")
         self.element.setObjectName("element")
+        
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(110, 20, 81, 21))
         font = QtGui.QFont()
@@ -117,6 +153,7 @@ class Ui_MainWindow(object):
         "color: white;")
         self.label_2.setTextFormat(QtCore.Qt.MarkdownText)
         self.label_2.setObjectName("label_2")
+        # label vidas total
         self.vidasTotal = QtWidgets.QLabel(self.centralwidget)
         self.vidasTotal.setGeometry(QtCore.QRect(190, 20, 16, 21))
         font = QtGui.QFont()
@@ -124,9 +161,10 @@ class Ui_MainWindow(object):
         self.vidasTotal.setFont(font)
         self.vidasTotal.setStyleSheet("background-color: none;\n"
         "color: white;")
-        self.vidasTotal.setText("")
+        self.vidasTotal.setText(str(vida))
         self.vidasTotal.setTextFormat(QtCore.Qt.MarkdownText)
         self.vidasTotal.setObjectName("vidasTotal")
+        
         self.element_2 = QtWidgets.QLabel(self.centralwidget)
         self.element_2.setGeometry(QtCore.QRect(20, 430, 301, 41))
         self.element_2.setStyleSheet("border-radius: 15px;\n"
@@ -145,6 +183,7 @@ class Ui_MainWindow(object):
         "color: white;")
         self.label_4.setTextFormat(QtCore.Qt.MarkdownText)
         self.label_4.setObjectName("label_4")
+        # label dica ------
         self.dica = QtWidgets.QLabel(self.centralwidget)
         self.dica.setGeometry(QtCore.QRect(70, 440, 231, 20))
         font = QtGui.QFont()
@@ -152,14 +191,16 @@ class Ui_MainWindow(object):
         self.dica.setFont(font)
         self.dica.setStyleSheet("background-color: none;\n"
         "color: white;")
-        self.dica.setText("")
+        self.dica.setText(word[1])
         self.dica.setTextFormat(QtCore.Qt.MarkdownText)
         self.dica.setObjectName("dica")
+        #line edit to try chars ---------
         self.input = QtWidgets.QLineEdit(self.centralwidget)
         self.input.setGeometry(QtCore.QRect(60, 480, 181, 41))
         self.input.setStyleSheet("background-color: rgb(255, 255, 255);\n"
         "border-radius: 15px;")
         self.input.setObjectName("input")
+        #send -------------------
         self.send = QtWidgets.QPushButton(self.centralwidget)
         self.send.setGeometry(QtCore.QRect(250, 480, 61, 41))
         self.send.setStyleSheet("border-radius: 15px;\n"
@@ -167,6 +208,8 @@ class Ui_MainWindow(object):
         "background-color: rgb(213, 213, 213);\n"
         "")
         self.send.setObjectName("send")
+        #self.send.clicked.connect(self.btn_ok)
+        #label masked letters -----
         self.mask = QtWidgets.QLabel(self.centralwidget)
         self.mask.setGeometry(QtCore.QRect(40, 390, 231, 20))
         font = QtGui.QFont()
@@ -177,6 +220,8 @@ class Ui_MainWindow(object):
         self.mask.setText("")
         self.mask.setTextFormat(QtCore.Qt.MarkdownText)
         self.mask.setObjectName("mask")
+        self.mask.setText("")
+        
         self.element_3 = QtWidgets.QLabel(self.centralwidget)
         self.element_3.setGeometry(QtCore.QRect(20, 380, 301, 41))
         self.element_3.setStyleSheet("border-radius: 15px;\n"
@@ -203,10 +248,10 @@ class Ui_MainWindow(object):
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
-
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
+        self.game()
+        self.lifes(vida)
+      
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -217,20 +262,6 @@ class Ui_MainWindow(object):
 class Forca(Ui_MainWindow):
     def __init__(self, forca):
         self.setupUi(forca)
-        self.mask.setText(self.__sortear)
-        
-    @staticmethod
-    def __sortear():
-        f = open("fund-programacao\Python\pyqt\palavras.txt", "r").read() 
-        separe = f.replace('\n', '').split(";")   
-        sort = separe[random.randint(0, len(separe)-1)] #SORTEIO DA PALAVRA! 
-        w = sort.split(":")
-        tam = len(word[0])
-        
-        return word
-    
-    
-    
     
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
