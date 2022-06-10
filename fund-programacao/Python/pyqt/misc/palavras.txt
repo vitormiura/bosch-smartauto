@@ -1,2 +1,0 @@
-cadeira:sentar;
-ventilador:usado para refrescar;
