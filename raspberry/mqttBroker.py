@@ -1,13 +1,3 @@
-# cont = 0 
-
-# if butao == 1:
-#     if cont == 0:
-#         botao.on 
-#         cont++
-#     elif cont == 1:
-#         botao.off
-#         cont--
-
 import paho.mqtt.client as mqtt
 import RPi.GPIO as gpio
 import time
@@ -48,8 +38,7 @@ client.loop_start()
 while True:
     butao = gpio.input(button)
 
-    # time.sleep(0.5)
-    # print('oiiiii')
+    time.sleep(0.1)
     
     if butao == 1:
         verificador = True
@@ -62,10 +51,10 @@ while True:
         else:
             on = True
     
-    if on == True:
-        client.publish("miura", payload = 'oi', qos = 0, retain = False)
-    else:
-        client.publish("miura", payload = 'tchau', qos = 0, retain = False)
+        if on == True:
+            client.publish("miura", payload = 'oi', qos = 0, retain = False)
+        else:
+            client.publish("miura", payload = 'tchau', qos = 0, retain = False)
 
     #msg = input('INPUT: \n')
     #client.publish("miura", payload = msg, qos = 0, retain = False)
