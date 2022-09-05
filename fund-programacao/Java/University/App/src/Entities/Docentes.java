@@ -1,10 +1,10 @@
 package Entities;
 
 public class Docentes extends Members{
-    private String formacao;
+    private String formation;
 
-    public Docentes(String name, int age, String email, String formacao){
+    public Docentes(String name, int age, String email, String formation){
         super(name, age, email);
-        this.formacao = formacao;
+        this.formation = formation;
     }
 }
