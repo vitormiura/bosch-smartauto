@@ -1,16 +1,18 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
+import Entities.Students;
 
 public class DAO {
-    public Connection DBconnect() throws SQLException{
-        Connection con = null;
-        try{
-            String url = "jdbc:mysql://127.0.0.1:3306/universidade?user=root&password=";
-            con = DriverManager.getConnection(url);
-        } catch (SQLException error){
-            System.err.println(error.getMessage());
-        }
-        return con;
+    public static Connection connect() throws SQLException {
+        String url = "jdbc:postgresql://db.tapnomaqtntnlkpcwvwv.supabase.co:5432/postgres?user=postgres&password=miuravitor123!";
+        return DriverManager.getConnection(url);
+    }
+
+    public void insert(Connection connection) throws SQLException {
+        Statement statement = connection.createStatement();
+        statement.executeQuery(
+                "INSERT INTO disciplina (nome, alunos, professor, monitor) VALUES ('dante viado', 1 , 1, 1)");
     }
 }

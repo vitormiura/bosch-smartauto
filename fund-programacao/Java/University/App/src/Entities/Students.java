@@ -8,8 +8,8 @@ public class Students extends Discentes {
     private int faltas;
     private boolean status;
 
-    public Students(String name, int age, String email, int year, double media, ArrayList<Double> provas, int faltas, boolean status){
-        super(name, age, email, year);
+    public Students(int id, String name, int age, String email, int year, double media, ArrayList<Double> provas, int faltas, boolean status){
+        super(id, name, age, email, year);
         this.provas = provas;
         this.faltas = faltas;
         this.status = status;
