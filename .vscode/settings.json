@@ -1,6 +1,7 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "fund-programacao/Java/University/App/lib/postgresql-42.4.0.jar"
+        "fund-programacao/Java/University/App/lib/postgresql-42.4.0.jar",
+        "fund-programacao/Java/University/App/lib/postgresql-42.5.0.jar"
     ]
 }
